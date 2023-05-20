@@ -6,6 +6,7 @@
 
 #include "degree.h"
 #include<string>
+#pragma once
 using namespace std;
 
 class Student {
@@ -20,13 +21,14 @@ private:
     DegreeProgram programType;
 
 public:
-    string getStudentID();
-    string getFirstName();
-    string getLastName();
-    string getEmail();
-    int getAge();
-    int getDaysInCourse(int i);
-    DegreeProgram getDegreeType();
+    string getStudentID() const;
+    string getFirstName() const;
+    string getLastName() const;
+    string getEmail() const;
+    int getAge() const;
+    int getDaysInCourse(int i) const;
+    DegreeProgram getDegreeType() const;
+    void Print() const;
 
     void setStudentID(string studentID);
     void setFirstName(string firstName);
@@ -35,8 +37,6 @@ public:
     void setAge(int age);
     void setDaysInCourse(int daysInCourse[]);
     void setProgram(DegreeProgram programType);
-
-    void print();
 
     Student(string studentID, string firstName, string lastName, string email, int age, int daysInCourse[3], DegreeProgram programType) {
         this->studentID = studentID;
@@ -49,8 +49,6 @@ public:
         this->daysInCourse[2] = daysInCourse[2];
         this->programType = programType;
     }
-
-    Student();
 
 };
 

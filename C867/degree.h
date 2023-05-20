@@ -1,12 +1,7 @@
-//
-//  degree.h
-//  C867
-//
-//  Created by Thomas Diggs on 5/20/23.
-//
 
 #ifndef degree_h
 #define degree_h
 
+enum DegreeProgram {SECURITY, NETWORK, SOFTWARE};
 
-#endif /* degree_h */
+#endif

@@ -27,8 +27,9 @@ public:
     string getEmail() const;
     int getAge() const;
     int getDaysInCourse(int i) const;
-    DegreeProgram getDegreeType() const;
-    void Print() const;
+    DegreeProgram getProgramType() const;
+    
+    void Print();
 
     void setStudentID(string studentID);
     void setFirstName(string firstName);
@@ -38,17 +39,7 @@ public:
     void setDaysInCourse(int daysInCourse[]);
     void setProgram(DegreeProgram programType);
 
-    Student(string studentID, string firstName, string lastName, string email, int age, int daysInCourse[3], DegreeProgram programType) {
-        this->studentID = studentID;
-        this->firstName = firstName;
-        this->lastName = lastName;
-        this->email = email;
-        this->age = age;
-        this->daysInCourse[0] = daysInCourse[0];
-        this->daysInCourse[1] = daysInCourse[1];
-        this->daysInCourse[2] = daysInCourse[2];
-        this->programType = programType;
-    }
+    Student(string studentID, string firstName, string lastName, string email, int age, int daysInCourse[3], DegreeProgram programType);
 
 };
 

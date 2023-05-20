@@ -1,21 +1,12 @@
-//
-//  roster.cpp
-//  C867
-//
-//  Created by Thomas Diggs on 5/20/23.
-//
 
 #include "roster.hpp"
 
+#include<iostream>
+#include<string>
+#pragma once
+using namespace std;
 
-/*
- #include "roster.h"
- #include <iostream>
- #include <string>
- #pragma once
- using namespace std;
-
- Student* Roster::getRoster(int index) {
+Student* Roster::getRoster(int index) {
      return classRosterArray[index];
  }
 
@@ -139,4 +130,3 @@
      }
      cout << endl;
  }
- */

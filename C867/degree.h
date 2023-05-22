@@ -4,6 +4,6 @@
 
 #pragma once
 
-enum DegreeProgram {SECURITY, NETWORK, SOFTWARE};
+enum DegreeProgram {SECURITY, NETWORK, SOFTWARE, UNDEFINED};
 
 #endif

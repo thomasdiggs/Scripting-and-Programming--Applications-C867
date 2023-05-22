@@ -6,6 +6,9 @@
 #pragma once
 using namespace std;
 
+
+
+
 Student* Roster::getRoster(int index) {
      return classRosterArray[index];
  }
@@ -71,7 +74,7 @@ Student* Roster::getRoster(int index) {
 
          if (classRosterArray[i] == nullptr) {
              continue;
-         } else if (classRosterArray[i]->getID() == studentID) {
+         } else if (classRosterArray[i]->getStudentID() == studentID) {
              classRosterArray[i] = nullptr;
              return;
          }
@@ -84,7 +87,7 @@ Student* Roster::getRoster(int index) {
 
      for (int i = 0; i < 5; i++) {
          if (classRosterArray[i] != nullptr) {
-             classRosterArray[i]->print();
+             classRosterArray[i]->Print();
          }
      }
 
@@ -93,7 +96,7 @@ Student* Roster::getRoster(int index) {
 
  void Roster::printAverageDaysInCourse(string studentID) {
      for (int i = 0; i < 5; i++) {
-         string id = classRosterArray[i]->getID();
+         string id = classRosterArray[i]->getStudentID();
          if (id == studentID) {
              int days1 = classRosterArray[i]->getDays(0);
              int days2 = classRosterArray[i]->getDays(1);
@@ -122,11 +125,12 @@ Student* Roster::getRoster(int index) {
 
  void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
      for (int i = 0; i < 5; i++) {
-         DegreeProgram degree = classRosterArray[i]->getProgram();
+         DegreeProgram degree = classRosterArray[i]->getProgramType();
 
          if (degree == degreeProgram) {
-             classRosterArray[i]->print();
+             classRosterArray[i]->Print();
          }
      }
      cout << endl;
  }
+

@@ -5,22 +5,6 @@
 #include <iostream>
 using namespace std;
 
-Roster classRoster;
-
-void Roster::add(string studentID, string firstName, string lastName, string email, int age, int days1, int days2, int days3, DegreeProgram program) {
-    for (int i = 0; i < 5; i++) {
-        classRosterArray[i] = new Student(studentID, firstName, lastName, email, age, days1, days2, days3, program);
-    }
-}
-
-/*
-void Roster::addIn(const string data) {
-    for (int i = 0; i < 5; i++) {
-        classRosterArray[i] = parse(data[i]);
-    }
-}
-*/
-
 Student* Roster::parse(string data) {
 
     size_t first = data.find(',');
@@ -59,24 +43,94 @@ Student* Roster::parse(string data) {
     daysInCourse[1] = days2;
     daysInCourse[2] = days3;
 
-    /*
-    string tempData[9];
+    return new Student(studentID, firstName, lastName, email, age, daysInCourse, program);
 
-    tempData[0] = studentID;
-    tempData[1] = firstName;
-    tempData[2] = lastName;
-    tempData[3] = email;
-    tempData[4] = stoi(age);
-    tempData[5] = days1;
-    tempData[6] = days2;
-    tempData[7] = days3;
-    tempData[8] = prog;
-    */
+}
 
-    cout << studentID << "\t" << firstName << "\t" << lastName << "\t" << email << "\t" << age << "\t" << days1 << "\t" << days2 << "\t" << days3 << "\t" << program << "\t" << prog << endl;
+void Roster::printAll() {
+    for (int i = 0; i < 5; i++) {
+        if (classRosterArray[i] != nullptr){
+            classRosterArray[i]->print();
+        }
+    }
+    cout << endl;
+}
 
-    // cout << daysInCourse[0] << "\t" << daysInCourse[1] << "\t" << daysInCourse[2] << endl;
+// Function definition to add student data from given array into student objects
+void Roster::add(const string data[], int arraySize) {
+    for (int i = 0; i < arraySize; i++) {
+        classRosterArray[i] = parse(data[i]);
+        // Printing memory addresses for testing purposes
+        // cout << classRosterArray[i] << "\n";
+    }
+    cout << endl;
+}
 
-    return new Student(studentID, firstName, lastName, email, age, days1, days2, days3, program);
+// Function declaration to remove student data from classRosterArray
+void Roster::remove(string studentID) {
+    bool ifFound = false;
+    
+    for (int i = 0; i < 5; i++) {
+        if (classRosterArray[i] != nullptr) {
+            string tempID = classRosterArray[i]->getStudentID();
+            if (tempID == studentID) {
+                delete classRosterArray[i];
+                classRosterArray[i] = nullptr;
+                ifFound = true;
+            }
+        }
+    }
+    
+    if (ifFound == false) {
+        cout << "Student ID not found \n";
+    }
+    cout << endl;
+}
 
+// Function declaration to compute average days in course for a particular student and print
+void Roster::printAverageDaysInCourse(string studentID){
+    for (int i = 0; i < 5; i++) {
+        string ID = classRosterArray[i]->getStudentID();
+        if (ID == studentID) {
+            int day1 = classRosterArray[i]->getDaysInCourse(0);
+            int day2 = classRosterArray[i]->getDaysInCourse(1);
+            int day3 = classRosterArray[i]->getDaysInCourse(2);
+            int avg = (day1 + day2 + day3) / 3;
+            cout << "Average days in course for student ID: " << ID << " is " << avg << " days";
+        }
+    }
+    cout << endl;
+}
+
+// Function declaration to loop through classRosterArray and print the average days in course for each element
+void Roster::loopAndPrintAvgDays() {
+    for (int i = 0; i < 5; i++) {
+        string ID = classRosterArray[i]->getStudentID();
+        printAverageDaysInCourse(ID);
+    }
+    cout << endl;
+}
+
+void Roster::printInvalidEmails() {
+    for (int i = 0; i < 5; i++) {
+        string tempEmail = classRosterArray[i]->getEmail();
+        size_t atSymbol = tempEmail.find("@");
+        size_t period = tempEmail.find(".");
+        size_t spaces = tempEmail.find(" ");
+        if ((atSymbol != string::npos) && (period != string::npos) && (spaces == string::npos)) {
+            
+        } else {
+            cout << "Invalid email " << tempEmail << "\n";
+        }
+    }
+    cout << endl;
+}
+
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+    for (int i = 0; i < 5; i++) {
+        DegreeProgram tempProgram = classRosterArray[i]->getDegreeProgram();
+        if (tempProgram == degreeProgram) {
+            classRosterArray[i]->print();
+        }
+    }
 }

@@ -15,14 +15,28 @@ private:
 
 public:
     Student* parse(string data);
-    void addIn(const string data);
-    void add(string studentID, string firstName, string lastName, string email, int age, int days1, int days2, int days3, DegreeProgram program);
     Student* classRosterArray[5];
     Roster() {
         for (int i = 0; i < 5; i++) {
             classRosterArray[i] = nullptr;
         }
     };
+    void printAll();
+    
+    // Function declaration to add student data from given array into student objects
+    void add(const string data[], int arraySize);
+
+    // Function declaration to remove student data from classRosterArray
+    void remove(string studentID);
+
+    // Function declaration to compute average days in course and print
+    void printAverageDaysInCourse(string studentID);
+    
+    void loopAndPrintAvgDays();
+    
+    void printInvalidEmails();
+    
+    void printByDegreeProgram(DegreeProgram degreeProgram);
 
 };
 

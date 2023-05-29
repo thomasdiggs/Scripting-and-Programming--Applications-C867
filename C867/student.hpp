@@ -9,10 +9,28 @@
 #pragma once
 using namespace std;
 
+/*
+D. For the Student class, do the following:
+    1. Create the class Student  in the files student.h and student.cpp, which includes each of the following variables:
+        - student ID
+        - first name
+        - last name
+        - email address
+        - age
+        - array of number of days to complete each course
+        - degree program
+    2. Create each of the following functions in the Student class:
+        a. an accessor (i.e., getter) for each instance variable from part D1
+        b. a mutator (i.e., setter) for each instance variable from part D1
+        c. All external access and changes to any instance variables of the Student class must be done using accessor and mutator functions.
+        d. constructor using all of the input parameters provided in the table
+        e. print() to print specific student data
+*/
+
 class Student {
 
 private:
-    // Student object instance variables
+    //Instance variables declarations
     string studentID;
     string firstName;
     string lastName;
@@ -22,19 +40,13 @@ private:
     DegreeProgram program;
 
 public:
+    //Print function declaration
     void print();
 
     // Student object contructor
-    Student(string studentID, string firstName, string lastName, string email, int age, int daysInCourse[3], DegreeProgram program) {
-        this->studentID = studentID;
-        this->firstName = firstName;
-        this->lastName = lastName;
-        this->email = email;
-        this->age = age;
-        this->program = program;
-        this->daysInCourse[0] = daysInCourse[0];
-        this->daysInCourse[1] = daysInCourse[1];
-        this->daysInCourse[2] = daysInCourse[2];
+    Student();
+    ~Student() {
+
     }
 
     // Accessor declarations
